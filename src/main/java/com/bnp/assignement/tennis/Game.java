@@ -4,12 +4,14 @@ import java.util.Objects;
 
 public class Game {
 
-    public Player players1;
-    public Player players2;
+    private final Player players1;
+    private final Player players2;
+    Boolean ongoing;
 
     public Game(Player players1, Player players2) {
         this.players1 = players1;
         this.players2 = players2;
+        this.ongoing = true;
     }
 
     public void player1Scores(){
@@ -22,6 +24,7 @@ public class Game {
 
     public String getScore(){
         if (players1.getPoints() == 4 && players2.getPoints() < 3) {
+            setOngoing(false);
             return "Player 1 wins";
         } else if (players2.getPoints() == 4 && players1.getPoints() < 3) {
             return "Player 2 wins";
@@ -58,5 +61,13 @@ public class Game {
             case 3 -> "40";
             default -> "";
         };
+    }
+
+    public Boolean isOngoing() {
+        return ongoing;
+    }
+
+    public void setOngoing(Boolean ongoing) {
+        this.ongoing = ongoing;
     }
 }
