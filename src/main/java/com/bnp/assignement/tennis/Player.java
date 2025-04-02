@@ -2,8 +2,8 @@ package com.bnp.assignement.tennis;
 
 public class Player {
 
-    public String name;
-    public Integer points;
+    private String name;
+    private Integer points;
 
     public Player(String name) {
         this.name = name;
