@@ -1,18 +1,24 @@
 package com.bnp.assignement.tennis;
 
+import com.bnp.assignement.tennis.service.GameService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class TennisApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+    Player player1;
+    Player player2;
+    Game game;
 
     @BeforeEach
     void setUp() {
-        game = new Game();
+         player1 = new Player("player1");
+         player2 = new Player("player2");
+         game = new Game(player1,player2);
     }
 
     @Test
