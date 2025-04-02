@@ -15,11 +15,17 @@ public class Game {
     }
 
     public void player1Scores(){
-        this.players1.addPoints();
+        if (isOngoing()){
+            this.players1.addPoints();
+        }
+        getScore();
     }
 
     public void player2Scores(){
-        this.players2.addPoints();
+        if (isOngoing()){
+            this.players2.addPoints();
+        }
+        getScore();
     }
 
     public String getScore(){
@@ -27,6 +33,7 @@ public class Game {
             setOngoing(false);
             return "Player 1 wins";
         } else if (players2.getPoints() == 4 && players1.getPoints() < 3) {
+            setOngoing(false);
             return "Player 2 wins";
         } else if (players1.getPoints() == 3 && players2.getPoints() == 3) {
             return "Deuce";
@@ -35,9 +42,11 @@ public class Game {
         } else if (players2.getPoints() == 4 && players1.getPoints() == 3) {
             return "Advantage Player 2";
         } else if (players1.getPoints() > 4 && players2.getPoints() == 3){
+            setOngoing(false);
             return "Player 1 wins";
         }
         else if (players2.getPoints() > 4 && players1.getPoints() == 3){
+            setOngoing(false);
             return "Player 2 wins";
         }
         else if (Objects.equals(players1.getPoints(), players2.getPoints()) && players1.getPoints() >= 3){
