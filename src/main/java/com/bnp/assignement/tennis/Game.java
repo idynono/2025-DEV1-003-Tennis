@@ -6,12 +6,14 @@ public class Game {
 
     private final Player players1;
     private final Player players2;
-    Boolean ongoing;
+    private static boolean ongoing;
+    private boolean gameOver;
 
     public Game(Player players1, Player players2) {
         this.players1 = players1;
         this.players2 = players2;
-        this.ongoing = true;
+        this.gameOver = false;
+        setOngoing(true);
     }
 
     public void player1Scores(){
@@ -30,11 +32,11 @@ public class Game {
 
     public String getScore(){
         if (players1.getPoints() == 4 && players2.getPoints() < 3) {
-            setOngoing(false);
-            return "Player 1 wins";
+            setGameOver(true);
+            return "Player " + players1.getName() + " wins";
         } else if (players2.getPoints() == 4 && players1.getPoints() < 3) {
-            setOngoing(false);
-            return "Player 2 wins";
+            setGameOver(true);
+            return "Player " + players2.getName() + " wins";
         } else if (players1.getPoints() == 3 && players2.getPoints() == 3) {
             return "Deuce";
         } else if (players1.getPoints() == 4 && players2.getPoints() == 3) {
@@ -42,12 +44,14 @@ public class Game {
         } else if (players2.getPoints() == 4 && players1.getPoints() == 3) {
             return "Advantage Player 2";
         } else if (players1.getPoints() > 4 && players2.getPoints() == 3){
-            setOngoing(false);
-            return "Player 1 wins";
+            setGameOver(true);
+            return "Player " + players1.getName() + " wins";
+
         }
         else if (players2.getPoints() > 4 && players1.getPoints() == 3){
-            setOngoing(false);
-            return "Player 2 wins";
+            setGameOver(true);
+            return "Player " + players2.getName() + " wins";
+
         }
         else if (Objects.equals(players1.getPoints(), players2.getPoints()) && players1.getPoints() >= 3){
             return "Deuce";
@@ -72,11 +76,19 @@ public class Game {
         };
     }
 
-    public Boolean isOngoing() {
+    public static Boolean isOngoing() {
         return ongoing;
     }
 
-    public void setOngoing(Boolean ongoing) {
-        this.ongoing = ongoing;
+    public static void setOngoing(Boolean ongoingParam) {
+        ongoing = ongoingParam;
+    }
+
+    public Boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(Boolean gameOver) {
+        this.gameOver = gameOver;
     }
 }

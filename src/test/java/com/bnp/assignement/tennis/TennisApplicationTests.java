@@ -1,6 +1,5 @@
 package com.bnp.assignement.tennis;
 
-import com.bnp.assignement.tennis.service.GameService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -164,5 +163,28 @@ class TennisApplicationTests {
         game.player1Scores();
         game.player2Scores();
         assertEquals("Deuce", game.getScore());
+    }
+
+    @Test
+    void deuceAfterAdvantage2() {
+        game.player1Scores();
+        game.player1Scores();
+        game.player1Scores();
+
+        game.player2Scores();
+        game.player2Scores();
+        game.player2Scores();
+
+        game.player1Scores();
+        game.player2Scores();
+
+        game.player1Scores();
+        game.player2Scores();
+
+        game.player1Scores();
+        game.player2Scores();
+
+        game.player1Scores();
+        assertEquals("Advantage Player 1", game.getScore());
     }
 }
