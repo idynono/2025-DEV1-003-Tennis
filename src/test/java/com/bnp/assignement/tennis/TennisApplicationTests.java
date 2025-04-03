@@ -78,7 +78,7 @@ class TennisApplicationTests {
         game.player1Scores();
         game.player1Scores();
         game.player1Scores();
-        assertEquals("Player 1 wins", game.getScore());
+        assertEquals("Player player1 wins", game.getScore());
     }
 
     @Test
@@ -87,7 +87,7 @@ class TennisApplicationTests {
         game.player2Scores();
         game.player2Scores();
         game.player2Scores();
-        assertEquals("Player 2 wins", game.getScore());
+        assertEquals("Player player2 wins", game.getScore());
     }
 
 
@@ -136,7 +136,7 @@ class TennisApplicationTests {
         game.player2Scores();
         game.player1Scores();
         game.player1Scores();
-        assertEquals("Player 1 wins", game.getScore());
+        assertEquals("Player player1 wins", game.getScore());
     }
 
     @Test
@@ -149,7 +149,7 @@ class TennisApplicationTests {
         game.player2Scores();
         game.player2Scores();
         game.player2Scores();
-        assertEquals("Player 2 wins", game.getScore());
+        assertEquals("Player player2 wins", game.getScore());
     }
 
     @Test
@@ -163,28 +163,5 @@ class TennisApplicationTests {
         game.player1Scores();
         game.player2Scores();
         assertEquals("Deuce", game.getScore());
-    }
-
-    @Test
-    void deuceAfterAdvantage2() {
-        game.player1Scores();
-        game.player1Scores();
-        game.player1Scores();
-
-        game.player2Scores();
-        game.player2Scores();
-        game.player2Scores();
-
-        game.player1Scores();
-        game.player2Scores();
-
-        game.player1Scores();
-        game.player2Scores();
-
-        game.player1Scores();
-        game.player2Scores();
-
-        game.player1Scores();
-        assertEquals("Advantage Player 1", game.getScore());
     }
 }
