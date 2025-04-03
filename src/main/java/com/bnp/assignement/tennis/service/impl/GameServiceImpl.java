@@ -23,6 +23,8 @@ public class GameServiceImpl implements GameService {
     public void player1Scores () throws GameException {
         if( game == null) {
             throw new GameException("Game not started");
+        } else if (isGameOver()){
+            throw new GameException("Game is over");
         } else {
             game.player1Scores();
         }
@@ -31,10 +33,27 @@ public class GameServiceImpl implements GameService {
     public void player2Scores () throws GameException {
         if( game == null) {
             throw new GameException("Game not started");
+        } else if (isGameOver()){
+            throw new GameException("Game is over");
         } else {
             game.player2Scores();
         }
     }
+
+    public boolean isGameOver() {
+        return game.isGameOver();
+    }
+
+    public boolean isOngoing(){
+        return Game.isOngoing();
+    }
+
+    public String getScore() {
+        return game.getScore();
+    }
+
+
+
 
 
 }
